@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace DelegateBankSystem
 {
+    /*
+    Client:
+    +номер карты
+    +пароль
+    +сумма на счету
+    */
     class Client
     {
-        private string CardNumber { get; set; }
-        private string Password { get; set; }
-        private double ClientMoney { get; set; }
+        public string CardNumber { get; set; }
+        public string Password { get; set; }
+        public double ClientMoney { get; set; }
 
     }
 }

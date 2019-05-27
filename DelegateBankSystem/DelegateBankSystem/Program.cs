@@ -10,6 +10,15 @@ namespace DelegateBankSystem
     {
         static void Main(string[] args)
         {
+            Bank bankObj = new Bank();
+            string NumberCard = bankObj.GenerationNumberCard();
+            Console.WriteLine(NumberCard);
+            Console.ReadKey();
+            Console.WriteLine();
+            string password = bankObj.GenerationPassword();
+            Console.WriteLine(password);
+            Console.ReadKey();
+            Console.WriteLine();
         }
     }
 }
