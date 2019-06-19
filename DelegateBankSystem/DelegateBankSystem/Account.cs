@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DelegateBankSystem
+namespace BankSystem
 {
     /*
     Account:
@@ -17,21 +17,53 @@ namespace DelegateBankSystem
     */
     class Account
     {
-        public void AddMoney(Client _client, double _money)
+        public static string filePath = "data.txt";
+        public delegate void MyDel(string filePath, string text);
+        public event MyDel EventRegistration;
+        Client clientAuthorizationTarget;
+        public bool Authorization(string cardNumber, string password)
         {
-            _client.ClientMoney += _money;
+            foreach (var item in Bank.ListClient)
+            {
+                if (item.CardNumber == cardNumber && item.Password == password)
+                {
+                    //TODO: Event вызывающий ЛК и + все, что в этом теле(подумать: может не стоит вызывать ЛК от сюда.)
+                    clientAuthorizationTarget = item;
+                    Console.WriteLine("Авторизация успешна");
+                    Console.ReadKey();
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Пользователь не найден");
+                    Console.ReadKey();
+
+                    return false;
+                }
+
+            }
+            return false;
         }
-        public void SubtractionMoney(Client _client, double _money)
+        public string RegistrationNewClient()
+        {
+            string cardNum = Bank.GenerationNumberCard();
+            string pass = Bank.GenerationPassword();
+            Bank.ListClient.Add(new Client(cardNum, pass));
+            EventRegistration?.Invoke(filePath, cardNum + ":" + pass);
+            return cardNum + ":" + pass;
+        }
+        
+        public void DepositMoney(double _money)
+        {
+            
+        }
+        public void WithdrawMoney(double _money)
         {
             if (true)//TODO: check money != 0
             {
-                _client.ClientMoney -= _money;
+
             }
         }
-        public bool checkPasswordToAuthorization(string _password)
-        {
-
-            return false;
-        }
+        
     }
 }

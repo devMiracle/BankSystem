@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DelegateBankSystem
+namespace BankSystem
 {
     /*
     Client:
@@ -14,9 +14,15 @@ namespace DelegateBankSystem
     */
     class Client
     {
-        public string CardNumber { get; set; }
+        
+        public string CardNumber { get; private set; }
         public string Password { get; set; }
         public double ClientMoney { get; set; }
-
+        public Client(string numberCard, string password, double money = 0)
+        {
+            CardNumber = numberCard;
+            Password = password;
+            ClientMoney = money;
+        }
     }
 }
