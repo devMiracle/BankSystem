@@ -15,10 +15,10 @@ namespace BankSystem
     +метод для генерирования данных о карте
     +метод для генерирования пароля
     */
-    class Bank
+    class BankDataBase
     {
         public static List<Client> ListClient = new List<Client>();
-        public static void WriteToFileInfo(string filePath, string text)
+        public static void WriteToFileInfo(string filePath)
         {
             using (FileStream fs = new FileStream(filePath, FileMode.Create))
             {

@@ -12,9 +12,9 @@ namespace BankSystem
         public static void Main(string[] args)
         {
             Console.Title = "BANK Terminal";
-            Console.SetWindowSize(60, 30);
-            Console.SetBufferSize(60, 30);
-            Bank.GetFromFile(Account.filePath);
+            Console.SetWindowSize(31, 11);
+            Console.SetBufferSize(31, 11);
+            BankDataBase.GetFromFile(Account.filePath);
             
 
             //account.RegistrationNewClient();
